@@ -58,14 +58,11 @@
                 </div>
                 <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal"
                          background-color="#576574" text-color="#fff" active-text-color="#ffd04b">
-                    <el-menu-item index="1">处理中心</el-menu-item>
                     <el-submenu index="2" class="user-icon">
                         <template slot="title">
                             <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png">
                             </el-avatar>
                         </template>
-                        <el-menu-item index="2-1">选项1</el-menu-item>
-                        <el-menu-item index="2-2">选项2</el-menu-item>
                         <el-menu-item index="2-3" @click="logout">退出</el-menu-item>
                     </el-submenu>
                 </el-menu>
@@ -135,6 +132,8 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
+        position: fixed;
+        width: 20%;
     }
 
     #app .menu .logo {
@@ -166,6 +165,7 @@
         /*排列方向竖向*/
         flex-direction: column;
         height: 100vh;
+        padding-left: 200px;
     }
 
     .home .head {

@@ -3,18 +3,19 @@
         <div class="login_box">
             <!--头像区域-->
             <div class="avatar_box">
-                <img src="../assets/logo.png">
+                <img src="../assets/emi.png">
             </div>
             <!--登录表单区域-->
             <el-form ref="loginFormRef" label-width="0px" class="login_form" :model="loginForm" :rules="loginFormRules">
                 <!--用户名区域-->
                 <el-form-item prop="username">
-                    <el-input prefix-icon="el-icon-user" v-model="loginForm.username" type="text"></el-input>
+                    <el-input prefix-icon="el-icon-user" placeholder="请输入用户名" v-model="loginForm.username"
+                              type="text"></el-input>
                 </el-form-item>
                 <!--密码区域-->
                 <el-form-item prop="password">
                     <el-input prefix-icon="el-icon-lock" v-model="loginForm.password" type="password"
-                              @keyup.enter.native="login"></el-input>
+                              @keyup.enter.native="login" placeholder="请输入密码"></el-input>
                 </el-form-item>
                 <!--按钮区域-->
                 <el-form-item class="btns">
