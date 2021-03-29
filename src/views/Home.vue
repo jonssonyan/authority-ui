@@ -141,6 +141,7 @@
     }
 
     .el-header {
+        padding: 0;
         background-color: #576574;
     }
 </style>
