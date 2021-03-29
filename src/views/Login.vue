@@ -67,13 +67,7 @@
                     } else {
                         this.$message.success('登录成功');
                         window.sessionStorage.setItem('Authorization', res.data.Authorization);
-                        console.log(res.data)
-                        if (res.data.role_id === '3') {
-                            await this.$router.push('/consumer')
-                        }
-                        if (res.data.role_id === '1' || res.data.role_id === '2') {
-                            await this.$router.push('/home')
-                        }
+                        await this.$router.push('/home')
                     }
                 })
             },
