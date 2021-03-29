@@ -20,9 +20,9 @@
                             <span>{{item.name}}</span>
                         </template>
                         <!--二级菜单-->
-                        <el-menu-item :index="'/'+menu.path"
+                        <el-menu-item :index="'/'+menu.router"
                                       v-for="menu in item.menuLists" :key="menu.id"
-                                      @click="saveNavState('/'+menu.path)">
+                                      @click="saveNavState('/'+menu.router)">
                             <template slot="title">
                                 <!--图标-->
                                 <i :class="menu.icon"></i>
@@ -56,7 +56,7 @@
                         </svg>
                     </div>
                 </div>
-                <el-menu :default-active="activeIndex2" class="el-menu-demo" mode="horizontal"
+                <el-menu :default-active="activePath1" class="el-menu-demo" mode="horizontal"
                          background-color="#576574" text-color="#fff" active-text-color="#ffd04b">
                     <el-submenu index="2" class="user-icon">
                         <template slot="title">
@@ -81,7 +81,7 @@
                 menuList: [],
                 isCollapse: false,
                 activePath: '',
-                activeIndex2: '',
+                activePath1: '',
                 menuListForm: {
                     pageSize: 1,
                     pageNum: -1
