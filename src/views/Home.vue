@@ -1,43 +1,45 @@
 <template>
     <el-container>
-        <el-aside :width="isCollapse?'60px':'200px'">
-            <el-col :gutter="20">
-                <el-row :span="4">
-                    <div class="logo">
-                        <img class="icon" src="../assets/logo.png">
-                        <div class="sys-name" v-show="!isCollapse">以梦系统</div>
-                    </div>
-                </el-row>
-                <el-row :span="20">
-                    <el-menu :default-active="activePath" class="el-menu-vertical-demo"
-                             background-color="#222f3e" text-color="#fff" active-text-color="#ffd04b"
-                             :collapse="isCollapse" :unique-opened="true"
-                             :collapse-transition="false" :router="true">
-                        <!--一级菜单-->
-                        <el-submenu :index="item.id.toString()" v-for="item in menuList" :key="item.id">
-                            <!--一级菜单模板区域-->
-                            <template slot="title">
-                                <!--图标-->
-                                <i :class="item.icon"></i>
-                                <!--文本-->
-                                <span>{{item.name}}</span>
-                            </template>
-                            <!--二级菜单-->
-                            <el-menu-item :index="'/'+menu.router"
-                                          v-for="menu in item.menuLists" :key="menu.id"
-                                          @click="saveNavState('/'+menu.router)">
+        <div style="width: 200px;background-color: #222f3e">
+            <el-aside :width="isCollapse?'60px':'200px'">
+                <el-col :gutter="20">
+                    <el-row :span="4">
+                        <div class="logo">
+                            <img class="icon" src="../assets/logo.png">
+                            <div class="sys-name" v-show="!isCollapse">以梦系统</div>
+                        </div>
+                    </el-row>
+                    <el-row :span="20">
+                        <el-menu :default-active="activePath" class="el-menu-vertical-demo"
+                                 background-color="#222f3e" text-color="#fff" active-text-color="#ffd04b"
+                                 :collapse="isCollapse" :unique-opened="true"
+                                 :collapse-transition="false" :router="true">
+                            <!--一级菜单-->
+                            <el-submenu :index="item.id.toString()" v-for="item in menuList" :key="item.id">
+                                <!--一级菜单模板区域-->
                                 <template slot="title">
                                     <!--图标-->
-                                    <i :class="menu.icon"></i>
+                                    <i :class="item.icon"></i>
                                     <!--文本-->
-                                    <span>{{menu.name}}</span>
+                                    <span>{{item.name}}</span>
                                 </template>
-                            </el-menu-item>
-                        </el-submenu>
-                    </el-menu>
-                </el-row>
-            </el-col>
-        </el-aside>
+                                <!--二级菜单-->
+                                <el-menu-item :index="'/'+menu.router"
+                                              v-for="menu in item.menuLists" :key="menu.id"
+                                              @click="saveNavState('/'+menu.router)">
+                                    <template slot="title">
+                                        <!--图标-->
+                                        <i :class="menu.icon"></i>
+                                        <!--文本-->
+                                        <span>{{menu.name}}</span>
+                                    </template>
+                                </el-menu-item>
+                            </el-submenu>
+                        </el-menu>
+                    </el-row>
+                </el-col>
+            </el-aside>
+        </div>
         <el-container>
             <el-header>
                 <el-menu :default-active="activePath1" class="el-menu-demo" mode="horizontal"
@@ -101,7 +103,6 @@
 <style scoped lang="less">
 
     .el-aside {
-        display: flex;
         height: 100vh;
         background-color: #222f3e;
         line-height: 200px;
