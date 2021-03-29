@@ -48,14 +48,7 @@
                 }
             };
             return {
-                registerForm: {
-                    password1: "",
-                    password: "",
-                    username: "",
-                    email: "",
-                    qq: "",
-                    phone: ""
-                },
+                registerForm: {},
                 registerRules: {
                     username: [
                         {required: true, message: '请输入用户名', trigger: 'blur'},
