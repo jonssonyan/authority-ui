@@ -182,7 +182,7 @@
         methods: {
             async getUserList() {
                 let {data: res} = await this.$http.post(`/api/user/selectPage`, this.queryInfo);
-                if (res.code !== 1) return this.$message.error("获取分类列表失败！");
+                if (res.code !== 1) return this.$message.error("获取用户列表失败！");
                 this.userList.records = res.data.records;
                 this.userList.total = res.data.total
             },
