@@ -1,15 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
-import Home from '../views/Home.vue'
-import UserList from '../views/user/UserList.vue'
-import CategoryList from '../views/category/CategoryList.vue'
-import ProductList from '../views/product/ProductList.vue'
-import OrderList from '../views/order/OrderList.vue'
-import RightsList from '../views/power/RightsList.vue'
-import RoleList from '../views/power/RoleList.vue'
-import Register from "../views/Register";
-import axios from "axios";
+import {getToken} from "../utils/auth";
 
 Vue.use(VueRouter);
 
@@ -20,39 +11,40 @@ const routes = [
     },
     {
         path: '/login',
-        component: Login
+        component: () => import('../views/login')
     },
     {
         path: '/register',
-        component: Register
+        component: () => import('../views/register')
     },
     {
-        path: '/home',
-        component: Home,
+        path: '/layout',
+        component: () => import('../layout'),
+        redirect: '/user',
         children: [
             {
-                path: '/userList',
-                component: UserList
+                path: '/user',
+                component: () => import('../views/user')
             },
             {
-                path: '/categoryList',
-                component: CategoryList
+                path: '/category',
+                component: () => import('../views/category')
             },
             {
-                path: '/productList',
-                component: ProductList
+                path: '/product',
+                component: () => import('../views/product')
             },
             {
-                path: '/orderList',
-                component: OrderList
+                path: '/order',
+                component: () => import('../views/order')
             },
             {
-                path: '/rightsList',
-                component: RightsList
+                path: '/power',
+                component: () => import('../views/power')
             },
             {
-                path: '/roleList',
-                component: RoleList
+                path: '/role',
+                component: () => import('../views/role')
             },
         ]
     }
@@ -67,20 +59,11 @@ router.beforeEach((to, from, next) => {
     // 如果访问的首页直接放行
     if (to.path === '/login' || to.path === '/register') return next();
     // 获取token
-    const tokenStr = window.sessionStorage.getItem('Authorization');
+    const hasToken = getToken();
     // 没有token放回登录界面
-    if (!tokenStr) return next('/login');
+    if (!hasToken) return next('/login');
     // 有token放行
     return next()
 });
-
-axios.interceptors.request.use((config) => {
-    config.headers.Authorization = window.sessionStorage.getItem('Authorization');
-    return config
-});
-
-// axios 配置
-axios.defaults.baseURL = 'http://localhost:8888/authority';
-Vue.prototype.$http = axios;
 
 export default router
