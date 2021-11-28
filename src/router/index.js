@@ -20,7 +20,6 @@ const routes = [
     {
         path: '/layout',
         component: () => import('../layout'),
-        redirect: '/user',
         children: [
             {
                 path: '/user',
