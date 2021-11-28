@@ -53,7 +53,7 @@
             <!--删除-->
             <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
               <el-button type="danger" icon="el-icon-delete" size="mini"
-                         @click="removeUserById(scope.row.id)"></el-button>
+                         @click="removeUserById(scope.row)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -201,29 +201,21 @@ export default {
         this.editUserForm = res.data;
         this.editDialogVisible = true;
       });
-
     },
-    removeUserById(id) {
+    removeUserById(user) {
       // 弹框询问用户是否删除分类
       this.$confirm('此操作将永久删除该分类, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then( () => {
-        removeById({id: id}).then(() => {
-          this.$message.success("删除用户成功");
+      }).then(() => {
+        removeById({id: user.id}).then(() => {
           // 重新获取分类列表
           this.getUserList();
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
+          this.$message.success("删除用户成功");
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
+        this.$message.info('已取消删除');
       });
     },
     handleSizeChange(newSize) {

@@ -230,11 +230,11 @@ export default {
         if (!valid) return;
         // 发起添加权限的网络请求
         saveOrUpdate(this.addPowerForm).then(() => {
-          this.$message.success("添加权限成功");
           // 重新获取权限列表
           this.getPowerList();
           // 隐藏添加权限对话框
           this.addDialogVisible = false;
+          this.$message.success("添加权限成功");
         });
       })
     },
@@ -267,11 +267,11 @@ export default {
         if (!valid) return;
         // 发起修改权限的网络请求
         saveOrUpdate(this.editRoleForm).then(() => {
-          this.$message.success("修改权限成功");
           // 重新获取权限列表
           this.getPowerList();
           // 隐藏添加权限对话框
           this.editDialogVisible = false;
+          this.$message.success("修改权限成功");
         });
       })
     },
@@ -285,20 +285,13 @@ export default {
       }).then(() => {
         // 删除权限
         removeById({id: power.id}).then(() => {
-          this.$message.success("删除权限成功");
           // 重新获取权限列表
           this.getPowerList();
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
+          this.$message.success("删除权限成功");
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
-      });
+        this.$message.info('已取消删除');
+      })
     }
   }
 }

@@ -62,10 +62,10 @@ export default {
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return;
         login(this.loginForm).then(res => {
-          this.$message.success('登录成功');
           // 设置token
           setToken(res.data.Authorization);
           this.$router.push('/layout')
+          this.$message.success('登录成功');
         });
       })
     },

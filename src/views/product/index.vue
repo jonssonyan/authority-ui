@@ -225,11 +225,11 @@ export default {
       this.$refs.addProductRef.validate(async valid => {
         if (!valid) return;
         saveOrUpdate(this.addProductForm).then(() => {
-          this.$message.success("添加产品成功");
-          // 隐藏添加产品对话框
-          this.addDialogVisible = false;
           // 重新获取产品列表
           this.getProductList();
+          // 隐藏添加产品对话框
+          this.addDialogVisible = false;
+          this.$message.success("添加产品成功");
         });
       })
     },
@@ -257,11 +257,11 @@ export default {
       this.$refs.addProductRef.validate(async valid => {
         if (!valid) return;
         saveOrUpdate(this.editProductForm).then(() => {
-          this.$message.success("修改产品成功");
-          // 隐藏添加产品对话框
-          this.editDialogVisible = false;
           // 重新获取产品列表
           this.getProductList();
+          // 隐藏添加产品对话框
+          this.editDialogVisible = false;
+          this.$message.success("修改产品成功");
         });
       })
     },
@@ -274,20 +274,13 @@ export default {
         type: 'warning'
       }).then(() => {
         // 删除产品
-        removeById(product).then(() => {
-          this.$message.success("删除产品成功");
+        removeById({id: product.id}).then(() => {
           // 重新获取产品列表
           this.getProductList();
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
+          this.$message.success("删除产品成功");
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
+        this.$message.info('已取消删除');
       });
     }
   }

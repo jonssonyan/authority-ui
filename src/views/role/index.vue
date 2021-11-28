@@ -191,11 +191,11 @@ export default {
         if (!valid) return;
         // 发起添加角色的网络请求
         saveOrUpdate(this.addRoleForm).then(() => {
-          this.$message.success("添加角色成功");
-          // 隐藏添加角色对话框
-          this.addDialogVisible = false;
           // 重新获取角色列表
           this.getRoleList();
+          // 隐藏添加角色对话框
+          this.addDialogVisible = false;
+          this.$message.success("添加角色成功");
         });
       })
     },
@@ -216,11 +216,11 @@ export default {
         if (!valid) return;
         // 发起修改角色的网络请求
         saveOrUpdate(this.editRoleForm).then(() => {
-          this.$message.success("修改角色成功");
           // 重新获取角色列表
           this.getRoleList();
           // 隐藏添加角色对话框
           this.editDialogVisible = false;
+          this.$message.success("修改角色成功");
         });
       })
     },
@@ -234,19 +234,12 @@ export default {
       }).then(() => {
         // 删除角色
         removeById({id: role.id}).then(() => {
-          this.$message.success("删除角色成功");
           // 重新获取角色列表
           this.getRoleList();
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
+          this.$message.success("删除角色成功");
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
+        this.$message('已取消删除');
       });
     }
   }

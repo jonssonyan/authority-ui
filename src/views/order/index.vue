@@ -195,11 +195,11 @@ export default {
       this.$refs.addOrderRef.validate(async valid => {
         if (!valid) return;
         saveOrUpdate(this.editOrderForm).then(() => {
-          this.$message.success("修改订单成功");
-          // 隐藏添加订单对话框
-          this.editDialogVisible = false;
           // 重新获取订单列表
           this.getOrderList();
+          // 隐藏添加订单对话框
+          this.editDialogVisible = false;
+          this.$message.success("修改订单成功");
         });
       })
     },
@@ -212,20 +212,13 @@ export default {
         type: 'warning'
       }).then(() => {
         // 删除订单
-        removeById(order).then(() => {
-          this.$message.success("删除订单成功");
+        removeById({id: order.id}).then(() => {
           // 重新获取订单列表
           this.getOrderList();
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
+          this.$message.success("删除订单成功");
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
+        this.$message.info('已取消删除');
       });
     }
   }

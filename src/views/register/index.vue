@@ -78,8 +78,8 @@ export default {
       this.$refs.registerRef.validate(async valid => {
         if (!valid) return;
         register(this.registerForm).then(() => {
-          this.$message.success('注册成功');
           this.$router.push('/login')
+          this.$message.success('注册成功');
         });
       })
     },

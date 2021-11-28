@@ -44,7 +44,7 @@
             <!--删除-->
             <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
               <el-button type="danger" icon="el-icon-delete" size="mini"
-                         @click="removeCategoryById(scope.row.id)"></el-button>
+                         @click="removeCategoryById(scope.row)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -67,7 +67,7 @@
         width="50%"
         @close="addDialogClosed">
       <!--内容主体区域-->
-      <el-form :model="addCategoryForm" :rules="addCategoryRules" ref="addCategoryRef" label-width="70px">
+      <el-form :model="addCategoryForm" :rules="categoryRules" ref="categoryRef" label-width="70px">
         <el-form-item label="名称" prop="name">
           <el-input v-model="addCategoryForm.name"></el-input>
         </el-form-item>
@@ -101,7 +101,7 @@
         :visible.sync="editDialogVisible"
         width="50%">
       <!--内容主体区域-->
-      <el-form :model="editCategoryForm" :rules="addCategoryRules" ref="addCategoryRef" label-width="70px">
+      <el-form :model="editCategoryForm" :rules="categoryRules" ref="categoryRef" label-width="70px">
         <el-form-item label="名称" prop="name">
           <el-input v-model="editCategoryForm.name"></el-input>
         </el-form-item>
@@ -161,7 +161,7 @@ export default {
         parentId: null
       },
       // 添加分类的验证规则
-      addCategoryRules: {
+      categoryRules: {
         name: [
           {required: true, message: '请输入分类名称', trigger: 'blur'},
           {min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur'}
@@ -205,18 +205,18 @@ export default {
     },
     // 监听添加分类对话框的关闭事件
     addDialogClosed() {
-      this.$refs['addCategoryRef'].resetFields();
+      this.$refs['categoryRef'].resetFields();
     },
     // 点击按钮添加新分类
     addCategory() {
-      this.$refs.addCategoryRef.validate(async valid => {
+      this.$refs.categoryRef.validate(async valid => {
         if (!valid) return;
         saveOrUpdate(this.addCategoryForm).then(() => {
-          this.$message.success("添加分类成功");
-          // 隐藏添加分类对话框
-          this.addDialogVisible = false;
           // 重新获取分类列表
           this.getCategoryList();
+          // 隐藏添加分类对话框
+          this.addDialogVisible = false;
+          this.$message.success("添加分类成功");
         });
       })
     },
@@ -224,10 +224,10 @@ export default {
     showEditDialog(category) {
       getById({id: category.id, parentId: category.parentId}).then(res => {
         this.editCategoryForm = res.data;
-        select({id: category.id, parentId: category.parentId}).then(res => {
-          this.categoryForm = res.data;
-          this.editDialogVisible = true;
-        });
+      });
+      select({id: category.id, parentId: category.parentId}).then(res => {
+        this.categoryForm = res.data;
+        this.editDialogVisible = true;
       });
     },
     // 展示添加分类的对话框
@@ -239,19 +239,19 @@ export default {
     },
     // 修改分类信息并提交
     editCategoryInfo() {
-      this.$refs.addCategoryRef.validate(async valid => {
+      this.$refs.categoryRef.validate(async valid => {
         if (!valid) return;
         saveOrUpdate(this.editCategoryForm).then(() => {
-          this.$message.success("修改分类成功");
-          // 隐藏添加分类对话框
-          this.editDialogVisible = false;
           // 重新获取分类列表
           this.getCategoryList();
+          // 隐藏添加分类对话框
+          this.editDialogVisible = false;
+          this.$message.success("修改分类成功");
         });
       })
     },
     // 根据id删除分类信息
-    removeCategoryById(id) {
+    removeCategoryById(category) {
       // 弹框询问用户是否删除分类
       this.$confirm('此操作将永久删除该分类, 是否继续?', '提示', {
         confirmButtonText: '确定',
@@ -259,23 +259,13 @@ export default {
         type: 'warning'
       }).then(() => {
         // 删除分类
-        let category = {
-          id: id
-        };
-        removeById(category).then(() => {
-          this.$message.success("删除分类成功");
+        removeById({id: category.id}).then(() => {
           // 重新获取分类列表
           this.getCategoryList();
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
+          this.$message.success("删除分类成功");
         });
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
+        this.$message.info('已取消删除');
       });
     }
   }
