@@ -284,7 +284,7 @@ export default {
         type: 'warning'
       }).then(() => {
         // 删除权限
-        removeById(right).then(() => {
+        removeById({id: right.id}).then(() => {
           this.$message.success("删除权限成功");
           // 重新获取权限列表
           this.getRightList();
