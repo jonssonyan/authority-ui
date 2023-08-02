@@ -1,10 +1,10 @@
-# authority-ui
+# Authority UI
 
-权限管理系统前端
+Spring Boot+Vue.js权限管理系统前端
 
-# 后端地址
+# 作者
 
-https://github.com/jonssonyan/authority
+[jonssonyan](https://jonssonyan.com)
 
 # 开发工具
 
@@ -12,7 +12,4 @@ https://github.com/jonssonyan/authority
 
 # 框架/技术
 
-1. Vue.js
-2. Element
-3. axios
-4. JavaScript
+JavaScript / Vue.js / Element / axios
