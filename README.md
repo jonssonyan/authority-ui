@@ -1,15 +1,10 @@
-# Authority UI
+# Authority System Frontend
 
-Spring Boot+Vue.js权限管理系统前端
+基于SpringBoot和Vue.js的权限管理系统后端
 
-# 作者
+# 技术选型
 
-[jonssonyan](https://jonssonyan.com)
+开发技术: JavaScript / Vue.js / Element / axios
 
-# 开发工具
+开发工具: WebStorm 2019.3.5
 
-1. WebStorm 2019.3.5
-
-# 框架/技术
-
-JavaScript / Vue.js / Element / axios
