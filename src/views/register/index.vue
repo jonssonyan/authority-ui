@@ -3,7 +3,7 @@
     <div class="login_box">
       <!--头像区域-->
       <div class="avatar_box">
-        <img src="../../assets/emi.png">
+        <img src="../../assets/logo.png">
       </div>
       <el-form ref="registerRef" :model="registerForm" label-width="80px" :rules="registerRules"
                class="login_form">
