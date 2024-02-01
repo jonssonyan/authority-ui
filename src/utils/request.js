@@ -9,7 +9,7 @@ const service = axios.create({
 service.interceptors.response.use(
     response => {
         const res = response.data
-        if (res.code !== 1) {
+        if (res.code !== 20000) {
             Message({
                 message: res.msg || 'Error',
                 type: 'error',
