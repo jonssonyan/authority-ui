@@ -71,7 +71,7 @@
     </el-card>
     <!--添加用户的对话框-->
     <el-dialog
-        title="添加分类"
+        title="添加用户"
         :visible.sync="addDialogVisible"
         width="50%"
         @close="addDialogClosed">
@@ -103,7 +103,7 @@
     </el-dialog>
     <!--修改用户的对话框-->
     <el-dialog
-        title="修改分类"
+        title="修改用户"
         :visible.sync="editDialogVisible"
         width="50%">
       <!--内容主体区域-->
@@ -153,7 +153,7 @@ export default {
       },
       // 修改的用户对象
       editUserForm: {},
-      // 添加分类的验证规则
+      // 添加用户的验证规则
       addUserRules: {
         username: [
           {required: true, message: '请输入用户名', trigger: 'blur'},
@@ -203,14 +203,14 @@ export default {
       });
     },
     removeUserById(user) {
-      // 弹框询问用户是否删除分类
-      this.$confirm('此操作将永久删除该分类, 是否继续?', '提示', {
+      // 弹框询问用户是否删除用户
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
         removeById({id: user.id}).then(() => {
-          // 重新获取分类列表
+          // 重新获取用户列表
           this.getUserList();
           this.$message.success("删除用户成功");
         });
@@ -234,9 +234,9 @@ export default {
         if (!valid) return;
         saveOrUpdate(this.addUserForm).then(() => {
           this.$message.success("添加用户成功");
-          // 隐藏添加分类对话框
+          // 隐藏添加用户对话框
           this.addDialogVisible = false;
-          // 重新获取分类列表
+          // 重新获取用户列表
           this.getUserList();
         });
       })
@@ -246,9 +246,9 @@ export default {
         if (!valid) return;
         saveOrUpdate(this.editUserForm).then(() => {
           this.$message.success("修改用户成功");
-          // 隐藏添加分类对话框
+          // 隐藏添加用户对话框
           this.editDialogVisible = false;
-          // 重新获取分类列表
+          // 重新获取用户列表
           this.getUserList();
         });
       })
