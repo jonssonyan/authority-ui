@@ -147,7 +147,7 @@
 </template>
 
 <script>
-import {getById, removeById, saveOrUpdate, selectPage} from "../../api/rolePermission";
+import {getById, removeById, saveOrUpdate, selectPage} from "../../api/role-permission";
 import {select} from "../../api/role";
 import {selectPermission} from "../../api/permission";
 

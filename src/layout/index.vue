@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import {selectList} from '../api/menuList'
+import {selectList} from '../api/menu-list'
 import {removeToken} from "../utils/auth";
 
 export default {
