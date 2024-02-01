@@ -204,7 +204,7 @@ import {
 import { select } from '../../api/category'
 
 export default {
-  name: 'Product',
+  name: 'index',
   data() {
     return {
       queryInfo: {

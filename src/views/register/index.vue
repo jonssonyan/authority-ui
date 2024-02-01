@@ -67,7 +67,7 @@
 import { register } from '../../api/user'
 
 export default {
-  name: 'Register',
+  name: 'index',
   data() {
     // 自定义校验规则
     const validatePassword = (rule, value, callback) => {

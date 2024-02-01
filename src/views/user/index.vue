@@ -178,7 +178,7 @@
 import { getById, removeById, saveOrUpdate, selectPage } from '../../api/user'
 
 export default {
-  name: 'User',
+  name: 'index',
   data() {
     return {
       queryInfo: {

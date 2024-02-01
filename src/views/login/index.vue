@@ -17,10 +17,10 @@
         <el-form-item prop="username">
           <el-input
             prefix-icon="el-icon-user"
-            placeholder="请输入用户名"
-            @keyup.enter.native="login"
             v-model="loginForm.username"
             type="text"
+            @keyup.enter.native="login"
+            placeholder="请输入用户名"
           ></el-input>
         </el-form-item>
         <!--密码区域-->
@@ -49,7 +49,7 @@ import { login } from '../../api/user'
 import { setToken } from '../../utils/auth'
 
 export default {
-  name: 'Login',
+  name: 'index',
   data() {
     return {
       // 登录表单的数据绑定对象

@@ -160,7 +160,7 @@
 import { getById, removeById, saveOrUpdate, selectPage } from '../../api/role'
 
 export default {
-  name: 'Role',
+  name: 'index',
   data() {
     return {
       queryInfo: {

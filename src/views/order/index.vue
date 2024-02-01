@@ -153,12 +153,13 @@
 import { getById, removeById, saveOrUpdate, selectPage } from '../../api/order'
 
 export default {
-  name: 'Order',
+  name: 'index',
   data() {
     return {
       queryInfo: {
         pageNum: 1,
-        pageSize: 10
+        pageSize: 10,
+        outTradeNo: undefined,
       },
       orderList: {
         records: [],

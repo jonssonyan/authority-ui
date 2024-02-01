@@ -225,7 +225,7 @@ import { select } from '../../api/role'
 import { selectPermission } from '../../api/permission'
 
 export default {
-  name: 'Power',
+  name: 'index',
   data() {
     return {
       queryInfo: {

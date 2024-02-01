@@ -12,7 +12,7 @@
         <!--搜索与添加区域-->
         <el-col :span="6">
           <el-input
-            placeholder="请输入内容"
+            placeholder="请输入分类名称"
             v-model="queryInfo.name"
             clearable
             @clear="getCategoryList"
@@ -196,7 +196,7 @@ import {
 } from '../../api/category'
 
 export default {
-  name: 'Category',
+  name: 'index',
   data() {
     return {
       queryInfo: {
