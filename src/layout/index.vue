@@ -5,7 +5,7 @@
         <el-col :gutter="20">
           <el-row :span="4">
             <div class="logo">
-              <div class="sys-name" v-show="!isCollapse">权限系统</div>
+              <div class="sys-name" v-show="!isCollapse">权限管理系统</div>
             </div>
           </el-row>
           <el-row :span="20">
