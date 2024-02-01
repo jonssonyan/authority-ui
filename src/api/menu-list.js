@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  * 查询菜单列表
@@ -6,11 +6,11 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function selectList(data) {
-    return request({
-        url: '/api/menuList/selectList',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/menuList/selectList',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -19,11 +19,11 @@ export function selectList(data) {
  * @returns {AxiosPromise}
  */
 export function selectPage(data) {
-    return request({
-        url: '/api/menuList/selectPage',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/menuList/selectPage',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -32,11 +32,11 @@ export function selectPage(data) {
  * @returns {AxiosPromise}
  */
 export function removeById(data) {
-    return request({
-        url: '/api/menuList/removeById',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/menuList/removeById',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -45,9 +45,9 @@ export function removeById(data) {
  * @returns {AxiosPromise}
  */
 export function saveOrUpdate(data) {
-    return request({
-        url: '/api/menuList/saveOrUpdate',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/menuList/saveOrUpdate',
+    method: 'post',
+    data
+  })
 }

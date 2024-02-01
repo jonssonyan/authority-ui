@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  * 添加或者更新角色
@@ -6,11 +6,11 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function saveOrUpdate(data) {
-    return request({
-        url: '/api/role/saveOrUpdate',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/role/saveOrUpdate',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -19,11 +19,11 @@ export function saveOrUpdate(data) {
  * @returns {AxiosPromise}
  */
 export function removeById(data) {
-    return request({
-        url: '/api/role/removeById',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/role/removeById',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -32,11 +32,11 @@ export function removeById(data) {
  * @returns {AxiosPromise}
  */
 export function getById(data) {
-    return request({
-        url: '/api/role/getById',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/role/getById',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -45,11 +45,11 @@ export function getById(data) {
  * @returns {AxiosPromise}
  */
 export function selectPage(data) {
-    return request({
-        url: '/api/role/selectPage',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/role/selectPage',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -58,9 +58,9 @@ export function selectPage(data) {
  * @returns {AxiosPromise}
  */
 export function select(data) {
-    return request({
-        url: '/api/role/select',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/role/select',
+    method: 'get',
+    params: data
+  })
 }

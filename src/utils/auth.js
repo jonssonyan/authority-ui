@@ -7,7 +7,7 @@ const TokenKey = 'Authorization'
  * @returns {*}
  */
 export function getToken() {
-    return Cookies.get(TokenKey)
+  return Cookies.get(TokenKey)
 }
 
 /**
@@ -16,7 +16,7 @@ export function getToken() {
  * @returns {*}
  */
 export function setToken(token) {
-    return Cookies.set(TokenKey, token)
+  return Cookies.set(TokenKey, token)
 }
 
 /**
@@ -24,5 +24,5 @@ export function setToken(token) {
  * @returns {*}
  */
 export function removeToken() {
-    return Cookies.remove(TokenKey)
+  return Cookies.remove(TokenKey)
 }

@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  * 根据id查询权限
@@ -6,11 +6,11 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function getById(data) {
-    return request({
-        url: '/api/permission/getById',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/permission/getById',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -19,9 +19,9 @@ export function getById(data) {
  * @returns {AxiosPromise}
  */
 export function selectPermission(data) {
-    return request({
-        url: '/api/permission/select',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/permission/select',
+    method: 'get',
+    params: data
+  })
 }

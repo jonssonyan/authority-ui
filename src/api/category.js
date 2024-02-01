@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  * 分页查询分类
@@ -6,11 +6,11 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function selectPage(data) {
-    return request({
-        url: '/api/category/selectPage',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/category/selectPage',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -19,11 +19,11 @@ export function selectPage(data) {
  * @returns {AxiosPromise}
  */
 export function removeById(data) {
-    return request({
-        url: '/api/category/removeById',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/category/removeById',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -32,11 +32,11 @@ export function removeById(data) {
  * @returns {AxiosPromise}
  */
 export function saveOrUpdate(data) {
-    return request({
-        url: '/api/category/saveOrUpdate',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/category/saveOrUpdate',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -45,11 +45,11 @@ export function saveOrUpdate(data) {
  * @returns {AxiosPromise}
  */
 export function select(data) {
-    return request({
-        url: '/api/category/select',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/category/select',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -58,11 +58,11 @@ export function select(data) {
  * @returns {AxiosPromise}
  */
 export function selectChilds(data) {
-    return request({
-        url: '/api/category/selectChilds',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/category/selectChilds',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -71,9 +71,9 @@ export function selectChilds(data) {
  * @returns {AxiosPromise}
  */
 export function getById(data) {
-    return request({
-        url: '/api/category/getById',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/category/getById',
+    method: 'get',
+    params: data
+  })
 }

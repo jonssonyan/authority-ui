@@ -3,23 +3,40 @@
     <div class="login_box">
       <!--头像区域-->
       <div class="avatar_box">
-        <img src="../../assets/logo.png">
+        <img src="../../assets/logo.png" />
       </div>
       <!--登录表单区域-->
-      <el-form ref="loginFormRef" label-width="0px" class="login_form" :model="loginForm" :rules="loginFormRules">
+      <el-form
+        ref="loginFormRef"
+        label-width="0px"
+        class="login_form"
+        :model="loginForm"
+        :rules="loginFormRules"
+      >
         <!--用户名区域-->
         <el-form-item prop="username">
-          <el-input prefix-icon="el-icon-user" placeholder="请输入用户名" v-model="loginForm.username"
-                    type="text"></el-input>
+          <el-input
+            prefix-icon="el-icon-user"
+            placeholder="请输入用户名"
+            v-model="loginForm.username"
+            type="text"
+          ></el-input>
         </el-form-item>
         <!--密码区域-->
         <el-form-item prop="password">
-          <el-input prefix-icon="el-icon-lock" v-model="loginForm.password" type="password"
-                    @keyup.enter.native="login" placeholder="请输入密码"></el-input>
+          <el-input
+            prefix-icon="el-icon-lock"
+            v-model="loginForm.password"
+            type="password"
+            @keyup.enter.native="login"
+            placeholder="请输入密码"
+          ></el-input>
         </el-form-item>
         <!--按钮区域-->
         <el-form-item class="btns">
-          <el-button type="primary" @click="login">登录</el-button>
+          <el-button type="primary" @click="login" @keyup.enter="login"
+            >登录
+          </el-button>
           <el-button type="primary" @click="register">注册</el-button>
           <el-button type="info" @click="resetLoginForm">重置</el-button>
         </el-form-item>
@@ -29,8 +46,8 @@
 </template>
 
 <script>
-import {login} from '../../api/user'
-import {setToken} from "../../utils/auth";
+import { login } from '../../api/user'
+import { setToken } from '../../utils/auth'
 
 export default {
   name: 'Login',
@@ -42,13 +59,23 @@ export default {
       loginFormRules: {
         // 验证用户名是否合法
         username: [
-          {required: true, message: '请输入用户名', trigger: 'blur'},
-          {min: 5, max: 15, message: '长度在 5 到 15 个字符', trigger: 'blur'}
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          {
+            min: 5,
+            max: 15,
+            message: '长度在 5 到 15 个字符',
+            trigger: 'blur'
+          }
         ],
         // 验证密码是否合法
         password: [
-          {required: true, message: '请输入密码', trigger: 'blur'},
-          {min: 5, max: 15, message: '长度在 5 到 15 个字符', trigger: 'blur'}
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          {
+            min: 5,
+            max: 15,
+            message: '长度在 5 到 15 个字符',
+            trigger: 'blur'
+          }
         ]
       }
     }
@@ -59,14 +86,14 @@ export default {
       this.$refs['loginFormRef'].resetFields()
     },
     login() {
-      this.$refs.loginFormRef.validate(async valid => {
-        if (!valid) return;
-        login(this.loginForm).then(res => {
+      this.$refs.loginFormRef.validate(async (valid) => {
+        if (!valid) return
+        login(this.loginForm).then((res) => {
           // 设置token
-          setToken(res.data.Authorization);
+          setToken(res.data.Authorization)
           this.$router.push('/layout')
-          this.$message.success('登录成功');
-        });
+          this.$message.success('登录成功')
+        })
       })
     },
     register() {

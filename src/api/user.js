@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  *登录
@@ -6,11 +6,11 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function login(data) {
-    return request({
-        url: '/login',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/login',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -19,11 +19,11 @@ export function login(data) {
  * @returns {AxiosPromise}
  */
 export function register(data) {
-    return request({
-        url: '/register',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/register',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -32,11 +32,11 @@ export function register(data) {
  * @returns {AxiosPromise}
  */
 export function countUsername(data) {
-    return request({
-        url: '/countUsername',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/countUsername',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -45,11 +45,11 @@ export function countUsername(data) {
  * @returns {AxiosPromise}
  */
 export function selectPage(data) {
-    return request({
-        url: '/api/user/selectPage',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/user/selectPage',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -58,11 +58,11 @@ export function selectPage(data) {
  * @returns {AxiosPromise}
  */
 export function saveOrUpdate(data) {
-    return request({
-        url: '/api/user/saveOrUpdate',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/user/saveOrUpdate',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -71,11 +71,11 @@ export function saveOrUpdate(data) {
  * @returns {AxiosPromise}
  */
 export function removeById(data) {
-    return request({
-        url: '/api/user/removeById',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/user/removeById',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -84,11 +84,11 @@ export function removeById(data) {
  * @returns {AxiosPromise}
  */
 export function getById(data) {
-    return request({
-        url: '/api/user/getById',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/user/getById',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -97,9 +97,9 @@ export function getById(data) {
  * @returns {AxiosPromise}
  */
 export function loginOut(data) {
-    return request({
-        url: '/api/user/loginOut',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/user/loginOut',
+    method: 'post',
+    data
+  })
 }

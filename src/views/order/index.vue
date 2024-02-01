@@ -11,11 +11,21 @@
       <el-row :gutter="20">
         <!--搜索与添加区域-->
         <el-col :span="6">
-          <el-input placeholder="请输入订单标题" v-model="queryInfo.subject" clearable @clear="getOrderList">
+          <el-input
+            placeholder="请输入订单标题"
+            v-model="queryInfo.subject"
+            clearable
+            @clear="getOrderList"
+          >
           </el-input>
         </el-col>
         <el-col :span="6">
-          <el-input placeholder="请输入订单号" v-model="queryInfo.outTradeNo" clearable @clear="getOrderList">
+          <el-input
+            placeholder="请输入订单号"
+            v-model="queryInfo.outTradeNo"
+            clearable
+            @clear="getOrderList"
+          >
           </el-input>
         </el-col>
         <!--搜索按钮-->
@@ -36,45 +46,68 @@
         <el-table-column label="是否有效">
           <template slot-scope="scope">
             <el-switch
-                :active-value=1
-                :inactive-value=0
-                v-model="scope.row.state" @change="stateChange(scope.row)">
+              :active-value="1"
+              :inactive-value="0"
+              v-model="scope.row.state"
+              @change="stateChange(scope.row)"
+            >
             </el-switch>
           </template>
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <!--修改-->
-            <el-tooltip effect="dark" content="修改" placement="top" :enterable="false">
-              <el-button type="primary" icon="el-icon-edit" size="mini"
-                         @click="showEditDialog(scope.row)"></el-button>
+            <el-tooltip
+              effect="dark"
+              content="修改"
+              placement="top"
+              :enterable="false"
+            >
+              <el-button
+                type="primary"
+                icon="el-icon-edit"
+                size="mini"
+                @click="showEditDialog(scope.row)"
+              ></el-button>
             </el-tooltip>
             <!--删除-->
-            <el-tooltip effect="dark" content="删除" placement="top" :enterable="false">
-              <el-button type="danger" icon="el-icon-delete" size="mini"
-                         @click="removeOrderById(scope.row)"></el-button>
+            <el-tooltip
+              effect="dark"
+              content="删除"
+              placement="top"
+              :enterable="false"
+            >
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                size="mini"
+                @click="removeOrderById(scope.row)"
+              ></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
       <!--分页区域-->
       <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="queryInfo.pageNum"
-          :page-sizes="[10, 20, 30, 40]"
-          :page-size="queryInfo.pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="orderList.total">
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="queryInfo.pageNum"
+        :page-sizes="[10, 20, 30, 40]"
+        :page-size="queryInfo.pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="orderList.total"
+      >
       </el-pagination>
     </el-card>
     <!--修改订单的对话框-->
-    <el-dialog
-        title="修改订单"
-        :visible.sync="editDialogVisible"
-        width="50%">
+    <el-dialog title="修改订单" :visible.sync="editDialogVisible" width="50%">
       <!--内容主体区域-->
-      <el-form :model="editOrderForm" :rules="orderRules" ref="addOrderRef" label-width="70px">
+      <el-form
+        :model="editOrderForm"
+        :rules="orderRules"
+        ref="addOrderRef"
+        label-width="70px"
+      >
         <el-form-item label="商品名称" prop="product.name">
           <el-input v-model="editOrderForm.product.name" disabled></el-input>
         </el-form-item>
@@ -98,27 +131,29 @@
         </el-form-item>
         <el-form-item label="是否有效" prop="state">
           <el-select v-model="editOrderForm.state" placeholder="请选择">
-            <el-option v-for="(item,index) in options"
-                       :key="index"
-                       :value="item.value"
-                       :label="item.label">
+            <el-option
+              v-for="(item, index) in options"
+              :key="index"
+              :value="item.value"
+              :label="item.label"
+            >
             </el-option>
           </el-select>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-    <el-button @click="editDialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="editOrderInfo">确 定</el-button>
-  </span>
+        <el-button @click="editDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="editOrderInfo">确 定</el-button>
+      </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import {getById, removeById, saveOrUpdate, selectPage} from "../../api/order";
+import { getById, removeById, saveOrUpdate, selectPage } from '../../api/order'
 
 export default {
-  name: "Order",
+  name: 'Order',
   data() {
     return {
       queryInfo: {
@@ -144,63 +179,60 @@ export default {
       // 添加订单的验证规则
       orderRules: {
         subject: [
-          {required: true, message: '请输入订单标题', trigger: 'blur'},
-          {min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur'}
+          { required: true, message: '请输入订单标题', trigger: 'blur' },
+          { min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur' }
         ],
-        state: [
-          {required: true, message: '请输入状态', trigger: 'blur'}
-        ]
+        state: [{ required: true, message: '请输入状态', trigger: 'blur' }]
       },
       options: [
-        {label: '有效', value: 1},
-        {label: '无效', value: 0}
-      ],
+        { label: '有效', value: 1 },
+        { label: '无效', value: 0 }
+      ]
     }
   },
   created() {
-    this.getOrderList();
+    this.getOrderList()
   },
   methods: {
     getOrderList() {
-      selectPage(this.queryInfo).then(res => {
-        this.orderList.records = res.data.records;
-        this.orderList.total = res.data.total;
-      });
+      selectPage(this.queryInfo).then((res) => {
+        this.orderList.records = res.data.records
+        this.orderList.total = res.data.total
+      })
     },
     // 监听pageSize改变的事件
     handleSizeChange(newSize) {
-      this.queryInfo.pageSize = newSize;
+      this.queryInfo.pageSize = newSize
       this.getOrderList()
     },
     // 监听pageNum改变的事件
     handleCurrentChange(newPage) {
-      this.queryInfo.pageNum = newPage;
+      this.queryInfo.pageNum = newPage
       this.getOrderList()
     },
     stateChange(order) {
       saveOrUpdate(order).then(() => {
-        this.$message.success("更新状态成功")
-
-      });
+        this.$message.success('更新状态成功')
+      })
     },
     // 展示修改订单的对话框
     showEditDialog(order) {
-      getById({id: order.id}).then(res => {
-        this.editOrderForm = res.data;
-        this.editDialogVisible = true;
-      });
+      getById({ id: order.id }).then((res) => {
+        this.editOrderForm = res.data
+        this.editDialogVisible = true
+      })
     },
     // 修改订单信息并提交
     editOrderInfo() {
-      this.$refs.addOrderRef.validate(async valid => {
-        if (!valid) return;
+      this.$refs.addOrderRef.validate(async (valid) => {
+        if (!valid) return
         saveOrUpdate(this.editOrderForm).then(() => {
           // 重新获取订单列表
-          this.getOrderList();
+          this.getOrderList()
           // 隐藏添加订单对话框
-          this.editDialogVisible = false;
-          this.$message.success("修改订单成功");
-        });
+          this.editDialogVisible = false
+          this.$message.success('修改订单成功')
+        })
       })
     },
     // 根据id删除订单信息
@@ -210,16 +242,18 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        // 删除订单
-        removeById({id: order.id}).then(() => {
-          // 重新获取订单列表
-          this.getOrderList();
-          this.$message.success("删除订单成功");
-        });
-      }).catch(() => {
-        this.$message.info('已取消删除');
-      });
+      })
+        .then(() => {
+          // 删除订单
+          removeById({ id: order.id }).then(() => {
+            // 重新获取订单列表
+            this.getOrderList()
+            this.$message.success('删除订单成功')
+          })
+        })
+        .catch(() => {
+          this.$message.info('已取消删除')
+        })
     }
   }
 }

@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  * 通过id查询产品
@@ -6,11 +6,11 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function getById(data) {
-    return request({
-        url: '/api/product/getById',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/product/getById',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -19,11 +19,11 @@ export function getById(data) {
  * @returns {AxiosPromise}
  */
 export function selectList(data) {
-    return request({
-        url: '/api/product/selectList',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/product/selectList',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -32,11 +32,11 @@ export function selectList(data) {
  * @returns {AxiosPromise}
  */
 export function selectByCategoryId(data) {
-    return request({
-        url: '/api/product/selectByCategoryId',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/product/selectByCategoryId',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -45,11 +45,11 @@ export function selectByCategoryId(data) {
  * @returns {AxiosPromise}
  */
 export function selectPage(data) {
-    return request({
-        url: '/api/product/selectPage',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/product/selectPage',
+    method: 'get',
+    params: data
+  })
 }
 
 /**
@@ -58,11 +58,11 @@ export function selectPage(data) {
  * @returns {AxiosPromise}
  */
 export function removeById(data) {
-    return request({
-        url: '/api/product/removeById',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/product/removeById',
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -71,9 +71,9 @@ export function removeById(data) {
  * @returns {AxiosPromise}
  */
 export function saveOrUpdate(data) {
-    return request({
-        url: '/api/product/saveOrUpdate',
-        method: 'post',
-        data
-    })
+  return request({
+    url: '/api/product/saveOrUpdate',
+    method: 'post',
+    data
+  })
 }

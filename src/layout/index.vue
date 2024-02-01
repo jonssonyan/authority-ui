@@ -1,7 +1,7 @@
 <template>
   <el-container>
-    <div style="width: 200px;background-color: #222f3e">
-      <el-aside :width="isCollapse?'60px':'200px'">
+    <div style="width: 200px; background-color: #222f3e">
+      <el-aside :width="isCollapse ? '60px' : '200px'">
         <el-col :gutter="20">
           <el-row :span="4">
             <div class="logo">
@@ -9,12 +9,23 @@
             </div>
           </el-row>
           <el-row :span="20">
-            <el-menu :default-active="activePath" class="el-menu-vertical-demo"
-                     background-color="#222f3e" text-color="#fff" active-text-color="#ffd04b"
-                     :collapse="isCollapse" :unique-opened="true"
-                     :collapse-transition="false" :router="true">
+            <el-menu
+              :default-active="activePath"
+              class="el-menu-vertical-demo"
+              background-color="#222f3e"
+              text-color="#fff"
+              active-text-color="#ffd04b"
+              :collapse="isCollapse"
+              :unique-opened="true"
+              :collapse-transition="false"
+              :router="true"
+            >
               <!--一级菜单-->
-              <el-submenu :index="item.id.toString()" v-for="item in menuList" :key="item.id">
+              <el-submenu
+                :index="item.id.toString()"
+                v-for="item in menuList"
+                :key="item.id"
+              >
                 <!--一级菜单模板区域-->
                 <template slot="title">
                   <!--图标-->
@@ -23,9 +34,12 @@
                   <span>{{ item.name }}</span>
                 </template>
                 <!--二级菜单-->
-                <el-menu-item :index="'/'+menu.router"
-                              v-for="menu in item.menuLists" :key="menu.id"
-                              @click="saveNavState('/'+menu.router)">
+                <el-menu-item
+                  :index="'/' + menu.router"
+                  v-for="menu in item.menuLists"
+                  :key="menu.id"
+                  @click="saveNavState('/' + menu.router)"
+                >
                   <template slot="title">
                     <!--图标-->
                     <i :class="menu.icon"></i>
@@ -41,11 +55,19 @@
     </div>
     <el-container>
       <el-header>
-        <el-menu :default-active="activePath1" class="el-menu-demo" mode="horizontal"
-                 background-color="#576574" text-color="#fff" active-text-color="#ffd04b">
+        <el-menu
+          :default-active="activePath1"
+          class="el-menu-demo"
+          mode="horizontal"
+          background-color="#576574"
+          text-color="#fff"
+          active-text-color="#ffd04b"
+        >
           <el-submenu index="1" class="user-icon">
             <template slot="title">
-              <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png">
+              <el-avatar
+                src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+              >
               </el-avatar>
             </template>
             <el-menu-item index="1-1" @click="logout">退出</el-menu-item>
@@ -53,18 +75,18 @@
         </el-menu>
       </el-header>
       <el-main>
-        <router-view/>
+        <router-view />
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
-import {selectList} from '../api/menu-list'
-import {removeToken} from "../utils/auth";
+import { selectList } from '../api/menu-list'
+import { removeToken } from '../utils/auth'
 
 export default {
-  name: "Layout",
+  name: 'Layout',
   data() {
     return {
       menuList: [],
@@ -78,11 +100,11 @@ export default {
     }
   },
   created() {
-    selectList(this.menuListForm).then(res => {
+    selectList(this.menuListForm).then((res) => {
       this.menuList = res.data
       // 记录上一次激活的菜单
       this.activePath = window.sessionStorage.getItem('activePath')
-    });
+    })
   },
   methods: {
     logout: function () {
@@ -100,7 +122,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-
 .el-aside {
   height: 100vh;
   background-color: #222f3e;
@@ -118,7 +139,6 @@ export default {
   height: 100%;
   justify-content: flex-end;
   align-items: center;
-
 }
 
 .el-menu-vertical-demo {

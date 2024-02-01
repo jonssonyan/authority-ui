@@ -1,4 +1,4 @@
-import request from "../utils/request";
+import request from '../utils/request'
 
 /**
  * 分页查询角色和菜单关系
@@ -6,9 +6,9 @@ import request from "../utils/request";
  * @returns {AxiosPromise}
  */
 export function selectPage(data) {
-    return request({
-        url: '/api/roleMenuList/selectPage',
-        method: 'get',
-        params: data
-    })
+  return request({
+    url: '/api/roleMenuList/selectPage',
+    method: 'get',
+    params: data
+  })
 }
