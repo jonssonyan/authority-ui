@@ -1,7 +1,4 @@
 FROM nginx:1.20-alpine
-LABEL maintainer="jonsosnyan <yz808@outlook.com>"
-RUN mkdir -p /authortiy/
-WORKDIR /authortiy/
-ENV TZ=Asia/Shanghai
-COPY dist/ .
+WORKDIR /app
+COPY dist /usr/share/nginx/html/
 ENTRYPOINT nginx -g 'daemon off;'
